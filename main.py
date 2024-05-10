@@ -9,7 +9,13 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Path to the directory containing the folders
-directory_path = 'C:/Users/gobli/AppData/Local/FoundryVTT/Data/assets/token_images/rogue_pirate_swashbuckler'
+directory_path = 'C:/portraits'
+
+# Border Data
+paste_the_border = True
+border_path = 'C:/border.png'
+param_border = 0.859375
+
 
 def circular_crop_and_save(file_path, folder_name, file_number, total_files):  # Include total_files in the signature
     try:
@@ -24,7 +30,24 @@ def circular_crop_and_save(file_path, folder_name, file_number, total_files):  #
             img_cropped = img.crop((0, 0, size, size))
             result = ImageOps.fit(img_cropped, mask.size, centering=(0.5, 0.5))
             result.putalpha(mask)
-
+            
+            #resize image to the size of the border-%param and apply border
+            if(paste_the_border):
+                with Image.open(border_path) as border:
+                
+                    size_border = border.size
+                    result = result.convert('RGBA')
+                    result = result.resize(size_border)
+                    final_image = Image.new("RGBA", result.size)
+                    
+                    result = result.resize((int(size_border[0]*param_border), int(size_border[1]*param_border)))
+                    size_result = result.size
+                    offset = ((size_border[0] - size_result[0]) // 2, (size_border[1] - size_result[1]) // 2)
+                    final_image.paste(result, box=offset, mask=result)
+                    final_image.paste(border, box=(0,0), mask=border)
+                    result = final_image
+                    
+                    
             # Save the image with circular crop
             circular_filename = f"{folder_name}_{file_number}_circular.png"
             circular_file_path = os.path.join(os.path.dirname(file_path), circular_filename)
@@ -73,4 +96,4 @@ if __name__ == "__main__":
 
 
 # Path to the directory containing the folders
-directory_path = 'C:/Users/gobli/AppData/Local/FoundryVTT/Data/assets/token_images'
+directory_path = 'C:/portraits'
