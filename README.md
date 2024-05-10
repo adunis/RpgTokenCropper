@@ -16,3 +16,7 @@ So for example with a folder set like this: ('C:/portraits/DRAGONS') and with 2 
 
 - DRAGONS_1_circular.png
 - DRAGONS_2_circular.png
+
+Note:
+
+The border must be an image with trasparency or the program won't work as intended
