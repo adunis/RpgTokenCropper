@@ -14,5 +14,5 @@ Usage:
 
 So for example with a folder set like this: ('C:/portraits/DRAGONS') and with 2 files inside DRAGONS folder the results will be:
 
--DRAGONS_1_circular.png
--DRAGONS_2_circular.png
+- DRAGONS_1_circular.png
+- DRAGONS_2_circular.png
