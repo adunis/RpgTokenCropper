@@ -19,4 +19,4 @@ So for example with a folder set like this: ('C:/portraits/DRAGONS') and with 2 
 
 Note:
 
-The border must be an image with trasparency or the program won't work as intended
+The border image must be an image with trasparency or the program won't work as intended
