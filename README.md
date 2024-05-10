@@ -2,7 +2,7 @@ The program take a list of folders as inputs, broswe in them and convert the ima
 
 [directory_name]_[file_number]_circular.png
 
-Then it proceeds to delete the original images (in the future a toggle option to mantain the original images would be included)
+Then it proceeds to delete the original images (in the future a toggle option to mantain the original images could be included)
 
 Usage:
 
